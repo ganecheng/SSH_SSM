@@ -1,0 +1,211 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="com.jpkc.mapper.CourseMapper" >
+  <resultMap id="BaseResultMap" type="com.jpkc.pojo.Course" >
+    <id column="course_id" property="courseId" jdbcType="VARCHAR" />
+    <result column="course_name" property="courseName" jdbcType="VARCHAR" />
+    <result column="course_parent_id" property="courseParentId" jdbcType="VARCHAR" />
+    <result column="course_add_time" property="courseAddTime" jdbcType="TIMESTAMP" />
+    <result column="course_update_time" property="courseUpdateTime" jdbcType="TIMESTAMP" />
+  </resultMap>
+  <sql id="Example_Where_Clause" >
+    <where >
+      <foreach collection="oredCriteria" item="criteria" separator="or" >
+        <if test="criteria.valid" >
+          <trim prefix="(" suffix=")" prefixOverrides="and" >
+            <foreach collection="criteria.criteria" item="criterion" >
+              <choose >
+                <when test="criterion.noValue" >
+                  and ${criterion.condition}
+                </when>
+                <when test="criterion.singleValue" >
+                  and ${criterion.condition} #{criterion.value}
+                </when>
+                <when test="criterion.betweenValue" >
+                  and ${criterion.condition} #{criterion.value} and #{criterion.secondValue}
+                </when>
+                <when test="criterion.listValue" >
+                  and ${criterion.condition}
+                  <foreach collection="criterion.value" item="listItem" open="(" close=")" separator="," >
+                    #{listItem}
+                  </foreach>
+                </when>
+              </choose>
+            </foreach>
+          </trim>
+        </if>
+      </foreach>
+    </where>
+  </sql>
+  <sql id="Update_By_Example_Where_Clause" >
+    <where >
+      <foreach collection="example.oredCriteria" item="criteria" separator="or" >
+        <if test="criteria.valid" >
+          <trim prefix="(" suffix=")" prefixOverrides="and" >
+            <foreach collection="criteria.criteria" item="criterion" >
+              <choose >
+                <when test="criterion.noValue" >
+                  and ${criterion.condition}
+                </when>
+                <when test="criterion.singleValue" >
+                  and ${criterion.condition} #{criterion.value}
+                </when>
+                <when test="criterion.betweenValue" >
+                  and ${criterion.condition} #{criterion.value} and #{criterion.secondValue}
+                </when>
+                <when test="criterion.listValue" >
+                  and ${criterion.condition}
+                  <foreach collection="criterion.value" item="listItem" open="(" close=")" separator="," >
+                    #{listItem}
+                  </foreach>
+                </when>
+              </choose>
+            </foreach>
+          </trim>
+        </if>
+      </foreach>
+    </where>
+  </sql>
+  <sql id="Base_Column_List" >
+    course_id, course_name, course_parent_id, course_add_time, course_update_time
+  </sql>
+  <select id="selectByExample" resultMap="BaseResultMap" parameterType="com.jpkc.pojo.CourseExample" >
+    select
+    <if test="distinct" >
+      distinct
+    </if>
+    <include refid="Base_Column_List" />
+    from course
+    <if test="_parameter != null" >
+      <include refid="Example_Where_Clause" />
+    </if>
+    <if test="orderByClause != null" >
+      order by ${orderByClause}
+    </if>
+  </select>
+  <select id="selectByPrimaryKey" resultMap="BaseResultMap" parameterType="java.lang.String" >
+    select 
+    <include refid="Base_Column_List" />
+    from course
+    where course_id = #{courseId,jdbcType=VARCHAR}
+  </select>
+  <delete id="deleteByPrimaryKey" parameterType="java.lang.String" >
+    delete from course
+    where course_id = #{courseId,jdbcType=VARCHAR}
+  </delete>
+  <delete id="deleteByExample" parameterType="com.jpkc.pojo.CourseExample" >
+    delete from course
+    <if test="_parameter != null" >
+      <include refid="Example_Where_Clause" />
+    </if>
+  </delete>
+  <insert id="insert" parameterType="com.jpkc.pojo.Course" >
+    insert into course (course_id, course_name, course_parent_id, 
+      course_add_time, course_update_time)
+    values (#{courseId,jdbcType=VARCHAR}, #{courseName,jdbcType=VARCHAR}, #{courseParentId,jdbcType=VARCHAR}, 
+      #{courseAddTime,jdbcType=TIMESTAMP}, #{courseUpdateTime,jdbcType=TIMESTAMP})
+  </insert>
+  <insert id="insertSelective" parameterType="com.jpkc.pojo.Course" >
+    insert into course
+    <trim prefix="(" suffix=")" suffixOverrides="," >
+      <if test="courseId != null" >
+        course_id,
+      </if>
+      <if test="courseName != null" >
+        course_name,
+      </if>
+      <if test="courseParentId != null" >
+        course_parent_id,
+      </if>
+      <if test="courseAddTime != null" >
+        course_add_time,
+      </if>
+      <if test="courseUpdateTime != null" >
+        course_update_time,
+      </if>
+    </trim>
+    <trim prefix="values (" suffix=")" suffixOverrides="," >
+      <if test="courseId != null" >
+        #{courseId,jdbcType=VARCHAR},
+      </if>
+      <if test="courseName != null" >
+        #{courseName,jdbcType=VARCHAR},
+      </if>
+      <if test="courseParentId != null" >
+        #{courseParentId,jdbcType=VARCHAR},
+      </if>
+      <if test="courseAddTime != null" >
+        #{courseAddTime,jdbcType=TIMESTAMP},
+      </if>
+      <if test="courseUpdateTime != null" >
+        #{courseUpdateTime,jdbcType=TIMESTAMP},
+      </if>
+    </trim>
+  </insert>
+  <select id="countByExample" parameterType="com.jpkc.pojo.CourseExample" resultType="java.lang.Integer" >
+    select count(*) from course
+    <if test="_parameter != null" >
+      <include refid="Example_Where_Clause" />
+    </if>
+  </select>
+  <update id="updateByExampleSelective" parameterType="map" >
+    update course
+    <set >
+      <if test="record.courseId != null" >
+        course_id = #{record.courseId,jdbcType=VARCHAR},
+      </if>
+      <if test="record.courseName != null" >
+        course_name = #{record.courseName,jdbcType=VARCHAR},
+      </if>
+      <if test="record.courseParentId != null" >
+        course_parent_id = #{record.courseParentId,jdbcType=VARCHAR},
+      </if>
+      <if test="record.courseAddTime != null" >
+        course_add_time = #{record.courseAddTime,jdbcType=TIMESTAMP},
+      </if>
+      <if test="record.courseUpdateTime != null" >
+        course_update_time = #{record.courseUpdateTime,jdbcType=TIMESTAMP},
+      </if>
+    </set>
+    <if test="_parameter != null" >
+      <include refid="Update_By_Example_Where_Clause" />
+    </if>
+  </update>
+  <update id="updateByExample" parameterType="map" >
+    update course
+    set course_id = #{record.courseId,jdbcType=VARCHAR},
+      course_name = #{record.courseName,jdbcType=VARCHAR},
+      course_parent_id = #{record.courseParentId,jdbcType=VARCHAR},
+      course_add_time = #{record.courseAddTime,jdbcType=TIMESTAMP},
+      course_update_time = #{record.courseUpdateTime,jdbcType=TIMESTAMP}
+    <if test="_parameter != null" >
+      <include refid="Update_By_Example_Where_Clause" />
+    </if>
+  </update>
+  <update id="updateByPrimaryKeySelective" parameterType="com.jpkc.pojo.Course" >
+    update course
+    <set >
+      <if test="courseName != null" >
+        course_name = #{courseName,jdbcType=VARCHAR},
+      </if>
+      <if test="courseParentId != null" >
+        course_parent_id = #{courseParentId,jdbcType=VARCHAR},
+      </if>
+      <if test="courseAddTime != null" >
+        course_add_time = #{courseAddTime,jdbcType=TIMESTAMP},
+      </if>
+      <if test="courseUpdateTime != null" >
+        course_update_time = #{courseUpdateTime,jdbcType=TIMESTAMP},
+      </if>
+    </set>
+    where course_id = #{courseId,jdbcType=VARCHAR}
+  </update>
+  <update id="updateByPrimaryKey" parameterType="com.jpkc.pojo.Course" >
+    update course
+    set course_name = #{courseName,jdbcType=VARCHAR},
+      course_parent_id = #{courseParentId,jdbcType=VARCHAR},
+      course_add_time = #{courseAddTime,jdbcType=TIMESTAMP},
+      course_update_time = #{courseUpdateTime,jdbcType=TIMESTAMP}
+    where course_id = #{courseId,jdbcType=VARCHAR}
+  </update>
+</mapper>

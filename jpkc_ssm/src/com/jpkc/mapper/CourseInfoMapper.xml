@@ -1,0 +1,338 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="com.jpkc.mapper.CourseInfoMapper" >
+  <resultMap id="BaseResultMap" type="com.jpkc.pojo.CourseInfo" >
+    <id column="course_id" property="courseId" jdbcType="VARCHAR" />
+    <result column="video_mp4" property="videoMp4" jdbcType="VARCHAR" />
+    <result column="video_flv" property="videoFlv" jdbcType="VARCHAR" />
+    <result column="star_score" property="starScore" jdbcType="DOUBLE" />
+    <result column="doc_1" property="doc1" jdbcType="VARCHAR" />
+    <result column="doc_2" property="doc2" jdbcType="VARCHAR" />
+    <result column="doc_3" property="doc3" jdbcType="VARCHAR" />
+    <result column="doc_4" property="doc4" jdbcType="VARCHAR" />
+    <result column="doc_5" property="doc5" jdbcType="VARCHAR" />
+    <result column="doc_6" property="doc6" jdbcType="VARCHAR" />
+    <result column="doc_7" property="doc7" jdbcType="VARCHAR" />
+    <result column="doc_8" property="doc8" jdbcType="VARCHAR" />
+    <result column="update_time" property="updateTime" jdbcType="TIMESTAMP" />
+  </resultMap>
+  <sql id="Example_Where_Clause" >
+    <where >
+      <foreach collection="oredCriteria" item="criteria" separator="or" >
+        <if test="criteria.valid" >
+          <trim prefix="(" suffix=")" prefixOverrides="and" >
+            <foreach collection="criteria.criteria" item="criterion" >
+              <choose >
+                <when test="criterion.noValue" >
+                  and ${criterion.condition}
+                </when>
+                <when test="criterion.singleValue" >
+                  and ${criterion.condition} #{criterion.value}
+                </when>
+                <when test="criterion.betweenValue" >
+                  and ${criterion.condition} #{criterion.value} and #{criterion.secondValue}
+                </when>
+                <when test="criterion.listValue" >
+                  and ${criterion.condition}
+                  <foreach collection="criterion.value" item="listItem" open="(" close=")" separator="," >
+                    #{listItem}
+                  </foreach>
+                </when>
+              </choose>
+            </foreach>
+          </trim>
+        </if>
+      </foreach>
+    </where>
+  </sql>
+  <sql id="Update_By_Example_Where_Clause" >
+    <where >
+      <foreach collection="example.oredCriteria" item="criteria" separator="or" >
+        <if test="criteria.valid" >
+          <trim prefix="(" suffix=")" prefixOverrides="and" >
+            <foreach collection="criteria.criteria" item="criterion" >
+              <choose >
+                <when test="criterion.noValue" >
+                  and ${criterion.condition}
+                </when>
+                <when test="criterion.singleValue" >
+                  and ${criterion.condition} #{criterion.value}
+                </when>
+                <when test="criterion.betweenValue" >
+                  and ${criterion.condition} #{criterion.value} and #{criterion.secondValue}
+                </when>
+                <when test="criterion.listValue" >
+                  and ${criterion.condition}
+                  <foreach collection="criterion.value" item="listItem" open="(" close=")" separator="," >
+                    #{listItem}
+                  </foreach>
+                </when>
+              </choose>
+            </foreach>
+          </trim>
+        </if>
+      </foreach>
+    </where>
+  </sql>
+  <sql id="Base_Column_List" >
+    course_id, video_mp4, video_flv, star_score, doc_1, doc_2, doc_3, doc_4, doc_5, doc_6, 
+    doc_7, doc_8, update_time
+  </sql>
+  <select id="selectByExample" resultMap="BaseResultMap" parameterType="com.jpkc.pojo.CourseInfoExample" >
+    select
+    <if test="distinct" >
+      distinct
+    </if>
+    <include refid="Base_Column_List" />
+    from course_info
+    <if test="_parameter != null" >
+      <include refid="Example_Where_Clause" />
+    </if>
+    <if test="orderByClause != null" >
+      order by ${orderByClause}
+    </if>
+  </select>
+  <select id="selectByPrimaryKey" resultMap="BaseResultMap" parameterType="java.lang.String" >
+    select 
+    <include refid="Base_Column_List" />
+    from course_info
+    where course_id = #{courseId,jdbcType=VARCHAR}
+  </select>
+  <delete id="deleteByPrimaryKey" parameterType="java.lang.String" >
+    delete from course_info
+    where course_id = #{courseId,jdbcType=VARCHAR}
+  </delete>
+  <delete id="deleteByExample" parameterType="com.jpkc.pojo.CourseInfoExample" >
+    delete from course_info
+    <if test="_parameter != null" >
+      <include refid="Example_Where_Clause" />
+    </if>
+  </delete>
+  <insert id="insert" parameterType="com.jpkc.pojo.CourseInfo" >
+    insert into course_info (course_id, video_mp4, video_flv, 
+      star_score, doc_1, doc_2, 
+      doc_3, doc_4, doc_5, doc_6, 
+      doc_7, doc_8, update_time
+      )
+    values (#{courseId,jdbcType=VARCHAR}, #{videoMp4,jdbcType=VARCHAR}, #{videoFlv,jdbcType=VARCHAR}, 
+      #{starScore,jdbcType=DOUBLE}, #{doc1,jdbcType=VARCHAR}, #{doc2,jdbcType=VARCHAR}, 
+      #{doc3,jdbcType=VARCHAR}, #{doc4,jdbcType=VARCHAR}, #{doc5,jdbcType=VARCHAR}, #{doc6,jdbcType=VARCHAR}, 
+      #{doc7,jdbcType=VARCHAR}, #{doc8,jdbcType=VARCHAR}, #{updateTime,jdbcType=TIMESTAMP}
+      )
+  </insert>
+  <insert id="insertSelective" parameterType="com.jpkc.pojo.CourseInfo" >
+    insert into course_info
+    <trim prefix="(" suffix=")" suffixOverrides="," >
+      <if test="courseId != null" >
+        course_id,
+      </if>
+      <if test="videoMp4 != null" >
+        video_mp4,
+      </if>
+      <if test="videoFlv != null" >
+        video_flv,
+      </if>
+      <if test="starScore != null" >
+        star_score,
+      </if>
+      <if test="doc1 != null" >
+        doc_1,
+      </if>
+      <if test="doc2 != null" >
+        doc_2,
+      </if>
+      <if test="doc3 != null" >
+        doc_3,
+      </if>
+      <if test="doc4 != null" >
+        doc_4,
+      </if>
+      <if test="doc5 != null" >
+        doc_5,
+      </if>
+      <if test="doc6 != null" >
+        doc_6,
+      </if>
+      <if test="doc7 != null" >
+        doc_7,
+      </if>
+      <if test="doc8 != null" >
+        doc_8,
+      </if>
+      <if test="updateTime != null" >
+        update_time,
+      </if>
+    </trim>
+    <trim prefix="values (" suffix=")" suffixOverrides="," >
+      <if test="courseId != null" >
+        #{courseId,jdbcType=VARCHAR},
+      </if>
+      <if test="videoMp4 != null" >
+        #{videoMp4,jdbcType=VARCHAR},
+      </if>
+      <if test="videoFlv != null" >
+        #{videoFlv,jdbcType=VARCHAR},
+      </if>
+      <if test="starScore != null" >
+        #{starScore,jdbcType=DOUBLE},
+      </if>
+      <if test="doc1 != null" >
+        #{doc1,jdbcType=VARCHAR},
+      </if>
+      <if test="doc2 != null" >
+        #{doc2,jdbcType=VARCHAR},
+      </if>
+      <if test="doc3 != null" >
+        #{doc3,jdbcType=VARCHAR},
+      </if>
+      <if test="doc4 != null" >
+        #{doc4,jdbcType=VARCHAR},
+      </if>
+      <if test="doc5 != null" >
+        #{doc5,jdbcType=VARCHAR},
+      </if>
+      <if test="doc6 != null" >
+        #{doc6,jdbcType=VARCHAR},
+      </if>
+      <if test="doc7 != null" >
+        #{doc7,jdbcType=VARCHAR},
+      </if>
+      <if test="doc8 != null" >
+        #{doc8,jdbcType=VARCHAR},
+      </if>
+      <if test="updateTime != null" >
+        #{updateTime,jdbcType=TIMESTAMP},
+      </if>
+    </trim>
+  </insert>
+  <select id="countByExample" parameterType="com.jpkc.pojo.CourseInfoExample" resultType="java.lang.Integer" >
+    select count(*) from course_info
+    <if test="_parameter != null" >
+      <include refid="Example_Where_Clause" />
+    </if>
+  </select>
+  <update id="updateByExampleSelective" parameterType="map" >
+    update course_info
+    <set >
+      <if test="record.courseId != null" >
+        course_id = #{record.courseId,jdbcType=VARCHAR},
+      </if>
+      <if test="record.videoMp4 != null" >
+        video_mp4 = #{record.videoMp4,jdbcType=VARCHAR},
+      </if>
+      <if test="record.videoFlv != null" >
+        video_flv = #{record.videoFlv,jdbcType=VARCHAR},
+      </if>
+      <if test="record.starScore != null" >
+        star_score = #{record.starScore,jdbcType=DOUBLE},
+      </if>
+      <if test="record.doc1 != null" >
+        doc_1 = #{record.doc1,jdbcType=VARCHAR},
+      </if>
+      <if test="record.doc2 != null" >
+        doc_2 = #{record.doc2,jdbcType=VARCHAR},
+      </if>
+      <if test="record.doc3 != null" >
+        doc_3 = #{record.doc3,jdbcType=VARCHAR},
+      </if>
+      <if test="record.doc4 != null" >
+        doc_4 = #{record.doc4,jdbcType=VARCHAR},
+      </if>
+      <if test="record.doc5 != null" >
+        doc_5 = #{record.doc5,jdbcType=VARCHAR},
+      </if>
+      <if test="record.doc6 != null" >
+        doc_6 = #{record.doc6,jdbcType=VARCHAR},
+      </if>
+      <if test="record.doc7 != null" >
+        doc_7 = #{record.doc7,jdbcType=VARCHAR},
+      </if>
+      <if test="record.doc8 != null" >
+        doc_8 = #{record.doc8,jdbcType=VARCHAR},
+      </if>
+      <if test="record.updateTime != null" >
+        update_time = #{record.updateTime,jdbcType=TIMESTAMP},
+      </if>
+    </set>
+    <if test="_parameter != null" >
+      <include refid="Update_By_Example_Where_Clause" />
+    </if>
+  </update>
+  <update id="updateByExample" parameterType="map" >
+    update course_info
+    set course_id = #{record.courseId,jdbcType=VARCHAR},
+      video_mp4 = #{record.videoMp4,jdbcType=VARCHAR},
+      video_flv = #{record.videoFlv,jdbcType=VARCHAR},
+      star_score = #{record.starScore,jdbcType=DOUBLE},
+      doc_1 = #{record.doc1,jdbcType=VARCHAR},
+      doc_2 = #{record.doc2,jdbcType=VARCHAR},
+      doc_3 = #{record.doc3,jdbcType=VARCHAR},
+      doc_4 = #{record.doc4,jdbcType=VARCHAR},
+      doc_5 = #{record.doc5,jdbcType=VARCHAR},
+      doc_6 = #{record.doc6,jdbcType=VARCHAR},
+      doc_7 = #{record.doc7,jdbcType=VARCHAR},
+      doc_8 = #{record.doc8,jdbcType=VARCHAR},
+      update_time = #{record.updateTime,jdbcType=TIMESTAMP}
+    <if test="_parameter != null" >
+      <include refid="Update_By_Example_Where_Clause" />
+    </if>
+  </update>
+  <update id="updateByPrimaryKeySelective" parameterType="com.jpkc.pojo.CourseInfo" >
+    update course_info
+    <set >
+      <if test="videoMp4 != null" >
+        video_mp4 = #{videoMp4,jdbcType=VARCHAR},
+      </if>
+      <if test="videoFlv != null" >
+        video_flv = #{videoFlv,jdbcType=VARCHAR},
+      </if>
+      <if test="starScore != null" >
+        star_score = #{starScore,jdbcType=DOUBLE},
+      </if>
+      <if test="doc1 != null" >
+        doc_1 = #{doc1,jdbcType=VARCHAR},
+      </if>
+      <if test="doc2 != null" >
+        doc_2 = #{doc2,jdbcType=VARCHAR},
+      </if>
+      <if test="doc3 != null" >
+        doc_3 = #{doc3,jdbcType=VARCHAR},
+      </if>
+      <if test="doc4 != null" >
+        doc_4 = #{doc4,jdbcType=VARCHAR},
+      </if>
+      <if test="doc5 != null" >
+        doc_5 = #{doc5,jdbcType=VARCHAR},
+      </if>
+      <if test="doc6 != null" >
+        doc_6 = #{doc6,jdbcType=VARCHAR},
+      </if>
+      <if test="doc7 != null" >
+        doc_7 = #{doc7,jdbcType=VARCHAR},
+      </if>
+      <if test="doc8 != null" >
+        doc_8 = #{doc8,jdbcType=VARCHAR},
+      </if>
+      <if test="updateTime != null" >
+        update_time = #{updateTime,jdbcType=TIMESTAMP},
+      </if>
+    </set>
+    where course_id = #{courseId,jdbcType=VARCHAR}
+  </update>
+  <update id="updateByPrimaryKey" parameterType="com.jpkc.pojo.CourseInfo" >
+    update course_info
+    set video_mp4 = #{videoMp4,jdbcType=VARCHAR},
+      video_flv = #{videoFlv,jdbcType=VARCHAR},
+      star_score = #{starScore,jdbcType=DOUBLE},
+      doc_1 = #{doc1,jdbcType=VARCHAR},
+      doc_2 = #{doc2,jdbcType=VARCHAR},
+      doc_3 = #{doc3,jdbcType=VARCHAR},
+      doc_4 = #{doc4,jdbcType=VARCHAR},
+      doc_5 = #{doc5,jdbcType=VARCHAR},
+      doc_6 = #{doc6,jdbcType=VARCHAR},
+      doc_7 = #{doc7,jdbcType=VARCHAR},
+      doc_8 = #{doc8,jdbcType=VARCHAR},
+      update_time = #{updateTime,jdbcType=TIMESTAMP}
+    where course_id = #{courseId,jdbcType=VARCHAR}
+  </update>
+</mapper>

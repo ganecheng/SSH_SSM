@@ -1,0 +1,211 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="com.jpkc.mapper.StarMapper" >
+  <resultMap id="BaseResultMap" type="com.jpkc.pojo.Star" >
+    <id column="star_id" property="starId" jdbcType="VARCHAR" />
+    <result column="course_id" property="courseId" jdbcType="VARCHAR" />
+    <result column="star_score" property="starScore" jdbcType="INTEGER" />
+    <result column="star_time" property="starTime" jdbcType="TIMESTAMP" />
+    <result column="device_info" property="deviceInfo" jdbcType="VARCHAR" />
+  </resultMap>
+  <sql id="Example_Where_Clause" >
+    <where >
+      <foreach collection="oredCriteria" item="criteria" separator="or" >
+        <if test="criteria.valid" >
+          <trim prefix="(" suffix=")" prefixOverrides="and" >
+            <foreach collection="criteria.criteria" item="criterion" >
+              <choose >
+                <when test="criterion.noValue" >
+                  and ${criterion.condition}
+                </when>
+                <when test="criterion.singleValue" >
+                  and ${criterion.condition} #{criterion.value}
+                </when>
+                <when test="criterion.betweenValue" >
+                  and ${criterion.condition} #{criterion.value} and #{criterion.secondValue}
+                </when>
+                <when test="criterion.listValue" >
+                  and ${criterion.condition}
+                  <foreach collection="criterion.value" item="listItem" open="(" close=")" separator="," >
+                    #{listItem}
+                  </foreach>
+                </when>
+              </choose>
+            </foreach>
+          </trim>
+        </if>
+      </foreach>
+    </where>
+  </sql>
+  <sql id="Update_By_Example_Where_Clause" >
+    <where >
+      <foreach collection="example.oredCriteria" item="criteria" separator="or" >
+        <if test="criteria.valid" >
+          <trim prefix="(" suffix=")" prefixOverrides="and" >
+            <foreach collection="criteria.criteria" item="criterion" >
+              <choose >
+                <when test="criterion.noValue" >
+                  and ${criterion.condition}
+                </when>
+                <when test="criterion.singleValue" >
+                  and ${criterion.condition} #{criterion.value}
+                </when>
+                <when test="criterion.betweenValue" >
+                  and ${criterion.condition} #{criterion.value} and #{criterion.secondValue}
+                </when>
+                <when test="criterion.listValue" >
+                  and ${criterion.condition}
+                  <foreach collection="criterion.value" item="listItem" open="(" close=")" separator="," >
+                    #{listItem}
+                  </foreach>
+                </when>
+              </choose>
+            </foreach>
+          </trim>
+        </if>
+      </foreach>
+    </where>
+  </sql>
+  <sql id="Base_Column_List" >
+    star_id, course_id, star_score, star_time, device_info
+  </sql>
+  <select id="selectByExample" resultMap="BaseResultMap" parameterType="com.jpkc.pojo.StarExample" >
+    select
+    <if test="distinct" >
+      distinct
+    </if>
+    <include refid="Base_Column_List" />
+    from star
+    <if test="_parameter != null" >
+      <include refid="Example_Where_Clause" />
+    </if>
+    <if test="orderByClause != null" >
+      order by ${orderByClause}
+    </if>
+  </select>
+  <select id="selectByPrimaryKey" resultMap="BaseResultMap" parameterType="java.lang.String" >
+    select 
+    <include refid="Base_Column_List" />
+    from star
+    where star_id = #{starId,jdbcType=VARCHAR}
+  </select>
+  <delete id="deleteByPrimaryKey" parameterType="java.lang.String" >
+    delete from star
+    where star_id = #{starId,jdbcType=VARCHAR}
+  </delete>
+  <delete id="deleteByExample" parameterType="com.jpkc.pojo.StarExample" >
+    delete from star
+    <if test="_parameter != null" >
+      <include refid="Example_Where_Clause" />
+    </if>
+  </delete>
+  <insert id="insert" parameterType="com.jpkc.pojo.Star" >
+    insert into star (star_id, course_id, star_score, 
+      star_time, device_info)
+    values (#{starId,jdbcType=VARCHAR}, #{courseId,jdbcType=VARCHAR}, #{starScore,jdbcType=INTEGER}, 
+      #{starTime,jdbcType=TIMESTAMP}, #{deviceInfo,jdbcType=VARCHAR})
+  </insert>
+  <insert id="insertSelective" parameterType="com.jpkc.pojo.Star" >
+    insert into star
+    <trim prefix="(" suffix=")" suffixOverrides="," >
+      <if test="starId != null" >
+        star_id,
+      </if>
+      <if test="courseId != null" >
+        course_id,
+      </if>
+      <if test="starScore != null" >
+        star_score,
+      </if>
+      <if test="starTime != null" >
+        star_time,
+      </if>
+      <if test="deviceInfo != null" >
+        device_info,
+      </if>
+    </trim>
+    <trim prefix="values (" suffix=")" suffixOverrides="," >
+      <if test="starId != null" >
+        #{starId,jdbcType=VARCHAR},
+      </if>
+      <if test="courseId != null" >
+        #{courseId,jdbcType=VARCHAR},
+      </if>
+      <if test="starScore != null" >
+        #{starScore,jdbcType=INTEGER},
+      </if>
+      <if test="starTime != null" >
+        #{starTime,jdbcType=TIMESTAMP},
+      </if>
+      <if test="deviceInfo != null" >
+        #{deviceInfo,jdbcType=VARCHAR},
+      </if>
+    </trim>
+  </insert>
+  <select id="countByExample" parameterType="com.jpkc.pojo.StarExample" resultType="java.lang.Integer" >
+    select count(*) from star
+    <if test="_parameter != null" >
+      <include refid="Example_Where_Clause" />
+    </if>
+  </select>
+  <update id="updateByExampleSelective" parameterType="map" >
+    update star
+    <set >
+      <if test="record.starId != null" >
+        star_id = #{record.starId,jdbcType=VARCHAR},
+      </if>
+      <if test="record.courseId != null" >
+        course_id = #{record.courseId,jdbcType=VARCHAR},
+      </if>
+      <if test="record.starScore != null" >
+        star_score = #{record.starScore,jdbcType=INTEGER},
+      </if>
+      <if test="record.starTime != null" >
+        star_time = #{record.starTime,jdbcType=TIMESTAMP},
+      </if>
+      <if test="record.deviceInfo != null" >
+        device_info = #{record.deviceInfo,jdbcType=VARCHAR},
+      </if>
+    </set>
+    <if test="_parameter != null" >
+      <include refid="Update_By_Example_Where_Clause" />
+    </if>
+  </update>
+  <update id="updateByExample" parameterType="map" >
+    update star
+    set star_id = #{record.starId,jdbcType=VARCHAR},
+      course_id = #{record.courseId,jdbcType=VARCHAR},
+      star_score = #{record.starScore,jdbcType=INTEGER},
+      star_time = #{record.starTime,jdbcType=TIMESTAMP},
+      device_info = #{record.deviceInfo,jdbcType=VARCHAR}
+    <if test="_parameter != null" >
+      <include refid="Update_By_Example_Where_Clause" />
+    </if>
+  </update>
+  <update id="updateByPrimaryKeySelective" parameterType="com.jpkc.pojo.Star" >
+    update star
+    <set >
+      <if test="courseId != null" >
+        course_id = #{courseId,jdbcType=VARCHAR},
+      </if>
+      <if test="starScore != null" >
+        star_score = #{starScore,jdbcType=INTEGER},
+      </if>
+      <if test="starTime != null" >
+        star_time = #{starTime,jdbcType=TIMESTAMP},
+      </if>
+      <if test="deviceInfo != null" >
+        device_info = #{deviceInfo,jdbcType=VARCHAR},
+      </if>
+    </set>
+    where star_id = #{starId,jdbcType=VARCHAR}
+  </update>
+  <update id="updateByPrimaryKey" parameterType="com.jpkc.pojo.Star" >
+    update star
+    set course_id = #{courseId,jdbcType=VARCHAR},
+      star_score = #{starScore,jdbcType=INTEGER},
+      star_time = #{starTime,jdbcType=TIMESTAMP},
+      device_info = #{deviceInfo,jdbcType=VARCHAR}
+    where star_id = #{starId,jdbcType=VARCHAR}
+  </update>
+</mapper>

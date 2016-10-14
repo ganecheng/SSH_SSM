@@ -1,0 +1,127 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE struts PUBLIC
+	"-//Apache Software Foundation//DTD Struts Configuration 2.3//EN"
+	"http://struts.apache.org/dtds/struts-2.3.dtd">
+<struts>
+	<constant name="struts.enable.DynamicMethodInvocation" value="true" />
+	<constant name="struts.action.extension" value="action,," />
+
+	<constant name="struts.devMode" value="true" />
+	<!-- 指定Web应用的默认编码集,相当于调用HttpServletRequest的setCharacterEncoding方法 -->
+	<constant name="struts.i18n.encoding" value="UTF-8" />
+	<!-- 设置浏览器是否缓存静态内容,默认值为true(生产环境下使用),开发阶段最好关闭 -->
+	<constant name="struts.serve.static.browserCache" value="false" />
+	<!-- 当struts的配置文件修改后,系统是否自动重新加载该文件,默认值为false(生产环境下使用),开发阶段最好打开 -->
+	<constant name="struts.configuration.xml.reload" value="true" />
+	<!-- struts不过滤的路径 -->
+	<constant name="struts.action.excludePattern" value="/ue/.*" />
+	<!-- 一次上传只可以上传20M，不管一次上传多少个文件，按总和计算 -->
+	<constant name="struts.multipart.maxSize" value="524288000" />
+
+	<!-- 根路径下的action请求开始 -->
+	<package name="default" namespace="/" extends="struts-default">
+		<result-types>
+			<result-type name="json" class="org.apache.struts2.json.JSONResult" />
+		</result-types>
+
+		<action name="404" class="com.jpkc.action.GoToAction" method="execute">
+			<result name="success">/common/404.jsp</result>
+		</action>
+
+		<action name="login_do" class="com.jpkc.action.AccountAction" method="login_do">
+			<result name="success" type="json">
+				<!-- 这里指定将被Struts2序列化的属性，该属性在action中必须有对应的getter方法 -->
+				<param name="root">json</param>
+			</result>
+		</action>
+
+		<action name="u_*" class="com.jpkc.action.AccountAction" method="u_{1}">
+			<result name="success" type="json">
+				<!-- 这里指定将被Struts2序列化的属性，该属性在action中必须有对应的getter方法 -->
+				<param name="root">json</param>
+			</result>
+		</action>
+	</package>
+	<!-- 根路径下的action请求结束 -->
+
+	<!-- 商品请求的action开始 -->
+	<package name="course_info_package" namespace="/item" extends="struts-default">
+		<result-types>
+			<result-type name="json" class="org.apache.struts2.json.JSONResult" />
+		</result-types>
+
+		<global-results>
+			<result name="404">/common/404.jsp</result>
+		</global-results>
+
+		<action name="*" class="com.jpkc.action.CourseAction" method="get_course_info">
+			<result name="success">/story/story_02.jsp</result>
+		</action>
+	</package>
+	<!-- 商品请求的action结束 -->
+
+	<!-- Goods_Type路径下的action请求开始 -->
+	<package name="goods_type_package" namespace="/goods_type" extends="struts-default">
+		<result-types>
+			<result-type name="json" class="org.apache.struts2.json.JSONResult" />
+		</result-types>
+		<action name="update_custom_type" class="com.jpkc.action.CourseAction" method="update_custom_type">
+			<result name="success">/shop/ajax/type/edit_types.jsp</result>
+		</action>
+		<action name="show_goods_type" class="com.jpkc.action.CourseAction" method="show_goods_type">
+			<result name="success">/shop/edit_types.jsp</result>
+		</action>
+		<action name="get_shop_goods_type" class="com.jpkc.action.CourseAction" method="get_shop_goods_type">
+			<result name="success">/item/types.jsp</result>
+		</action>
+		<action name="get_shop_goods_type_in_supermarket" class="com.jpkc.action.CourseAction" method="get_shop_goods_type">
+			<result name="success">/common/buyer_supermarket_goods_show_div.jsp</result>
+		</action>
+		<action name="get_ajax_course" class="com.jpkc.action.CourseAction" method="get_ajax_course">
+			<result name="success" type="json">
+				<param name="root">json</param>
+			</result>
+		</action>
+		<action name="goods_type_*" class="com.jpkc.action.CourseAction" method="goods_type_{1}">
+
+			<result name="success" type="json">
+				<!-- 这里指定将被Struts2序列化的属性，该属性在action中必须有对应的getter方法 -->
+				<param name="root">json</param>
+			</result>
+		</action>
+		<action name="custom_type_*" class="com.jpkc.action.CourseAction" method="custom_type_{1}">
+
+			<result name="success" type="json">
+				<!-- 这里指定将被Struts2序列化的属性，该属性在action中必须有对应的getter方法 -->
+				<param name="root">json</param>
+			</result>
+		</action>
+		<action name="get_shop_goods_type_level_one" class="com.jpkc.action.CourseAction" method="get_shop_goods_type_level_one">
+
+			<result name="success" type="json">
+				<!-- 这里指定将被Struts2序列化的属性，该属性在action中必须有对应的getter方法 -->
+				<param name="root">json</param>
+			</result>
+		</action>
+	</package>
+	<!-- Goods_Type路径下的action请求结束 -->
+
+	<!-- 管理员的action请求开始 -->
+	<package name="admin_package" namespace="/admin" extends="struts-default">
+		<result-types>
+			<result-type name="json" class="org.apache.struts2.json.JSONResult" />
+		</result-types>
+
+		<action name="exit" class="com.jpkc.action.AdminAction" method="exit">
+			<result name="success">/manager/login.jsp</result>
+		</action>
+
+		<action name="admin_*" class="com.jpkc.action.AdminAction" method="admin_{1}">
+			<result name="success" type="json">
+				<!-- 这里指定将被Struts2序列化的属性，该属性在action中必须有对应的getter方法 -->
+				<param name="root">json</param>
+			</result>
+		</action>
+	</package>
+	<!-- 管理员下的action请求结束 -->
+</struts>

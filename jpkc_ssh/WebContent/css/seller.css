@@ -1,0 +1,523 @@
+body{background-color:#f2f9fd;}
+.panel{background:#fff;}
+form .form-group:last-child{padding-bottom:0;}
+.passcode{position:absolute;right:0;top:0;height:32px;margin:1px;border-left:solid 1px #ddd;text-align:center;line-height:32px;border-radius:0 4px 4px 0;}
+
+
+.lefter{position:relative;float:left;width:180px;margin-right:-180px;background:#e6f2fb;text-align:center;}
+.righter{float:right;width:100%;padding-top:15px;background:#e6f2fb;}
+.mainer{margin-left:180px;}
+
+.logo{border-bottom:solid 1px #b5cfd9;padding:18px 10px;}
+
+.admin-navbar{border-bottom:solid 5px #09c;padding:0 15px;}
+.admin-nav li{display:inline-block;}
+.admin-nav ul{display:none;}
+.admin-nav ul li{float:none;display:block;}
+.admin-nav ul ul li{list-style:circle;margin-left:15px;}
+.admin-nav li a{padding: 5px 12px !important;}
+.admin-nav .active a{background:#09c;color:#fff;border-radius:4px 4px 0 0;padding: 5px 12px !important;}
+.admin-nav .active ul{display:block;position:fixed;left:0;width:180px;margin-top:41px;}
+.admin-nav .active ul a{background:transparent;color:#333;border-radius:0;}
+.admin-nav .active .active a{background:#e6f2fb;border-top:solid 1px #b5cfd9;border-bottom:solid 1px #b5cfd9;}
+
+.admin-bread{background:#f2f9fd;border-left:solid 1px #b5cfd9;border-bottom:solid 1px #b5cfd9;line-height:20px;}
+.admin-bread .bread{margin-bottom:0;}
+.admin-bread span{float:right;font-size:12px;color:#666;line-height:36px;}
+
+.admin{padding:30px;background:#fff;position:fixed;border-left:solid 1px #b5cfd9;right:0;bottom:0;top:87px;left:180px; overflow:auto;}
+.alert{margin-bottom:20px;}
+.admin-panel td{line-height:24px;}
+.admin-panel td .button{line-height:16px;}
+.admin-panel .pagination .active{background:#fff;}
+
+
+ul.ztree {
+	margin-top: 10px;
+	/* border: 1px solid #617775; */
+	background: #f0f6e4;
+	/* width: 220px; */
+	max-height:500px;
+	overflow-y: auto;
+	overflow-x: auto;
+}
+
+ul.log {
+	border: 1px solid #617775;
+	background: #f0f6e4;
+	width: 300px;
+	height: 170px;
+	overflow: hidden;
+}
+
+ul.log.small {
+	height: 45px;
+}
+
+ul.log li {
+	color: #666666;
+	list-style: none;
+	padding-left: 10px;
+}
+
+ul.log li.dark {
+	background-color: #E3E3E3;
+}
+
+/* ruler */
+div.ruler {
+	height: 20px;
+	/* width: 220px; */
+	background-color: #f0f6e4;
+	border: 1px solid #333;
+	margin-bottom: 5px;
+	cursor: pointer
+}
+
+div.ruler div.cursor {
+	height: 20px;
+	width: 30px;
+	background-color: #3C6E31;
+	color: white;
+	text-align: right;
+	padding-right: 5px;
+	cursor: pointer
+}
+
+.ztree li button.switch {
+	visibility: hidden;
+	width: 1px;
+}
+
+.ztree li button.switch.roots_docu {
+	visibility: visible;
+	width: 16px;
+}
+
+.ztree li button.switch.center_docu {
+	visibility: visible;
+	width: 16px;
+}
+
+.ztree li button.switch.bottom_docu {
+	visibility: visible;
+	width: 16px;
+}
+
+div#rMenu {
+	position: fixed;
+	visibility: hidden;
+	top: 0;
+	left:0;
+	background-color: #555;
+	text-align: left;
+	padding: 2px;
+}
+
+div#rMenu ul{
+	margin: 0px;
+	padding: 0px;
+}
+div#rMenu ul li {
+	margin: 1px 0;
+	padding: 0 5px;
+	cursor: pointer;
+	list-style: none outside none;
+	background-color: #DFDFDF;
+}
+
+
+/* 统一的外边距距离顶部class选项引用↓↓↓↓↓↓↓ */
+.G-MarginTop {
+	margin-top: 50px;
+}
+/* 统一的外边距距离顶部class选项引用↑↑↑↑↑↑↑ */
+.G-MarginTop-20 {
+	margin-top: -20px;
+}
+/* 统一的外边距距离顶部负50px class选项引用↓↓↓↓↓↓↓ */
+.G-MarginBottom-50 {
+	margin-bottom: -50px;
+}
+/* 统一的外边距距离顶部负50px class选项引用↑↑↑↑↑↑↑ */
+/* 统一的外边距距离顶部负20px class选项引用↓↓↓↓↓↓↓ */
+.G-MarginBottom-20 {
+	margin-bottom: -20px;
+}
+/* 统一的外边距距离顶部负20px class选项引用↑↑↑↑↑↑↑ */
+/* 统一的外边距距离底部置为 0px class选项引用↓↓↓↓↓↓↓ */
+.G-MarginBottom0 {
+	margin-bottom: 0px;
+}
+
+.G-MarginBottom5 {
+	margin-bottom: 5px;
+}
+
+.G-MarginBottom10 {
+	margin-bottom: 10px;
+}
+/* 统一的外边距距离顶部负10px class选项引用↓↓↓↓↓↓↓ */
+.G-MarginBottom-10 {
+	margin-bottom: -10px;
+}
+/* 统一的外边距距离顶部负10px class选项引用↑↑↑↑↑↑↑ */
+
+/* 统一的外边距距离顶部5px class选项引用↓↓↓↓↓↓↓ */
+.G-MarginTop5 {
+	margin-top: 5px;
+}
+/* 统一的外边距距离顶部 5px class选项引用↑↑↑↑↑↑↑ */
+/* 统一的外边距距离顶部10px class选项引用↓↓↓↓↓↓↓ */
+.G-MarginTop10 {
+	margin-top: 10px;
+}
+/* 统一的外边距距离顶部 10px class选项引用↑↑↑↑↑↑↑ */
+/* 统一的外边距距离顶部和底部10px class选项引用↓↓↓↓↓↓↓ */
+.G-MarginTopBottom10 {
+	margin-top: 10px;
+	margin-bottom: 10px;
+}
+.G-MarginTopBottom20 {
+	margin-top: 20px;
+	margin-bottom: 20px;
+}
+/* 统一的外边距距离顶部和底部 10px class选项引用↑↑↑↑↑↑↑ */
+/* 统一的外边距距离顶部20px class选项引用↓↓↓↓↓↓↓ */
+.G-MarginTop20 {
+	margin-top: 20px;
+}
+/* 统一的外边距距离顶部 20px class选项引用↑↑↑↑↑↑↑ */
+/* 统一的外边距距离顶部30px class选项引用↓↓↓↓↓↓↓ */
+.G-MarginTop30 {
+	margin-top: 30px;
+}
+/* 统一的外边距距离顶部 30px class选项引用↑↑↑↑↑↑↑ */
+/* 统一的外边距距离顶部20px class选项引用↓↓↓↓↓↓↓ */
+.G-MarginTop40 {
+	margin-top: 40px;
+}
+/* 统一的外边距距离顶部 40px class选项引用↑↑↑↑↑↑↑ */
+/* 统一的外边距距离顶部50px class选项引用↓↓↓↓↓↓↓ */
+.G-MarginTop50 {
+	margin-top: 50px;
+}
+/* 统一的外边距距离顶部 50px class选项引用↑↑↑↑↑↑↑ */
+/* 统一的外边距距离顶部100px class选项引用↓↓↓↓↓↓↓ */
+.G-MarginTop100 {
+	margin-top: 100px;
+}
+/* 统一的外边距距离顶部 100px class选项引用↑↑↑↑↑↑↑ */
+
+/* 统一的外边距距离顶部150px class选项引用↓↓↓↓↓↓↓ */
+.G-MarginTop150 {
+	margin-top: 150px;
+}
+/* 统一的外边距距离顶部 150px class选项引用↑↑↑↑↑↑↑ */
+
+/* 统一的内边距距离顶部20px class选项引用↓↓↓↓↓↓↓ */
+.G-PaddingTop20 {
+	padding-top: 20px;
+}
+/* 统一的内边距距离顶部20px class选项引用↑↑↑↑↑↑↑ */
+/* 统一的内边距距离顶部50px class选项引用↓↓↓↓↓↓↓ */
+.G-PaddingTop {
+	padding-top: 50px;
+}
+
+.G-PaddingTop0 {
+	padding-top: 0px;
+}
+
+.G-PaddingBottom0 {
+	padding-top: 0px;
+}
+
+.G-PaddingBottom10 {
+	padding-bottom: 10px;
+}
+
+.G-PaddingTop50 {
+	padding-top: 50px;
+}
+/* 统一的内边距距离顶部50px class选项引用↑↑↑↑↑↑↑ */
+
+/* 统一的内边距距离顶部100px class选项引用↓↓↓↓↓↓↓ */
+.G-PaddingTop100 {
+	padding-top: 100px;
+}
+/* 统一的内边距距离顶部100pxclass选项引用↑↑↑↑↑↑↑ */
+
+/* 统一的内边距距离顶部150px class选项引用↓↓↓↓↓↓↓ */
+.G-PaddingTop150 {
+	padding-top: 150px;
+}
+/* 统一的内边距距离顶部150pxclass选项引用↑↑↑↑↑↑↑ */
+
+/* 统一的左外边距距离顶部0px class选项引用↓↓↓↓↓↓↓ */
+.G-MarginLeft0 {
+	margin-left: 0px;
+}
+/* 统一的左外边距距离顶部0pxclass选项引用↑↑↑↑↑↑↑ */
+/* 统一的左外边距距离顶部5px class选项引用↓↓↓↓↓↓↓ */
+.G-MarginLeft5 {
+	margin-left: 5px;
+}
+
+.G-MarginLeft2 {
+	margin-left: 2px;
+}
+/* 统一的左外边距距离顶部5pxclass选项引用↑↑↑↑↑↑↑ */
+/* 统一的左外边距距离顶部10px class选项引用↓↓↓↓↓↓↓ */
+.G-MarginLeft10 {
+	margin-left: 10px;
+}
+
+.G-MarginLeft20 {
+	margin-left: 20px;
+}
+
+.G-MarginLeft30 {
+	margin-left: 30px;
+}
+
+.G-MarginLeft40 {
+	margin-left: 40px;
+}
+
+.G-MarginLeft50 {
+	margin-left: 50px;
+}
+
+.G-MarginLeft100 {
+	margin-left: 100px;
+}
+/* 统一的左外边距距离顶部10pxclass选项引用↑↑↑↑↑↑↑ */
+/* 统一的右外边距距离顶部0px class选项引用↓↓↓↓↓↓↓ */
+.G-MarginRight0 {
+	margin-right: 0px;
+}
+/* 统一的右外边距距离顶部0pxclass选项引用↑↑↑↑↑↑↑ */
+/* 统一的右外边距距离顶部5px class选项引用↓↓↓↓↓↓↓ */
+.G-MarginRight5 {
+	margin-right: 5px;
+}
+/* 统一的右外边距距离顶部5pxclass选项引用↑↑↑↑↑↑↑ */
+/* 统一的右外边距距离顶部10px class选项引用↓↓↓↓↓↓↓ */
+.G-MarginRight10 {
+	margin-right: 10px;
+}
+/* 统一的右外边距距离顶部10pxclass选项引用↑↑↑↑↑↑↑ */
+.G-MarginLeftAndRight0 {
+	margin-left: 0px;
+	margin-right: 0px;
+}
+
+.G-PaddingLeftAndRight0 {
+	padding-left: 0px;
+	padding-right: 0px;
+}
+
+.G-PaddingLeftAndRight5 {
+	padding-left: 5px;
+	padding-right: 5px;
+}
+
+.G-PaddingLeftAndRight10 {
+	padding-left: 10px;
+	padding-right: 10px;
+}
+
+.G-PaddingTopAndBottom0 {
+	padding-top: 0px;
+	padding-bottom: 0px;
+}
+
+.G-PaddingTopAndBottom5 {
+	padding-top: 5px;
+	padding-bottom: 5px;
+}
+
+.G-PaddingTopAndBottom3 {
+	padding-top: 3px;
+	padding-bottom: 3px;
+}
+
+.G-MarginTop-5 {
+	margin-top: -5px;
+}
+
+.G-MarginRight-5 {
+	margin-right: -5px;
+}
+
+.G-MarginLeft-5 {
+	margin-left: -5px;
+}
+
+.G-MarginBottom-5 {
+	margin-bottom: -5px;
+}
+
+/* 统一的左内边距距离顶部0px class选项引用↓↓↓↓↓↓↓ */
+.G-PaddingLeft0 {
+	padding-left: 0px;
+}
+/* 统一的左内边距距离顶部0pxclass选项引用↑↑↑↑↑↑↑ */
+/* 统一的左内边距距离顶部5px class选项引用↓↓↓↓↓↓↓ */
+.G-PaddingLeft5 {
+	padding-left: 5px;
+}
+/* 统一的左内边距距离顶部5pxclass选项引用↑↑↑↑↑↑↑ */
+/* 统一的左内边距距离顶部10px class选项引用↓↓↓↓↓↓↓ */
+.G-PaddingLeft10 {
+	padding-left: 10px;
+}
+/* 统一的左内边距距离顶部10pxclass选项引用↑↑↑↑↑↑↑ */
+
+/* 统一的右内边距距离顶部0px class选项引用↓↓↓↓↓↓↓ */
+.G-PaddingRight0 {
+	padding-right: 0px;
+}
+/* 统一的右内边距距离顶部0pxclass选项引用↑↑↑↑↑↑↑ */
+/* 统一的右内边距距离顶部5px class选项引用↓↓↓↓↓↓↓ */
+.G-PaddingRight5 {
+	padding-right: 5px;
+}
+/* 统一的右内边距距离顶部5pxclass选项引用↑↑↑↑↑↑↑ */
+/* 统一的右内边距距离顶部10px class选项引用↓↓↓↓↓↓↓ */
+.G-PaddingRight10 {
+	padding-right: 10px;
+}
+/* 统一的右内边距距离顶部10pxclass选项引用↑↑↑↑↑↑↑ */
+
+/* 时间轴开始↓↓↓↓↓↓↓ */
+ #timeline .timeline-item:after,#timeline .timeline-item:before {
+    content: '';
+    display: block;
+    width: 100%;
+    clear: both;
+}
+
+#timeline {
+    width: 90%;
+    margin: 30px auto;
+    position: relative;
+    -webkit-transition: all 0.4s ease;
+    -moz-transition: all 0.4s ease;
+    -ms-transition: all 0.4s ease;
+    transition: all 0.4s ease;
+}
+#timeline:before {
+    content: "";
+    width: 3px;
+    height: 100%;
+    background: #ee4d4d;
+    left: 50%;
+    top: 0;
+    position: absolute;
+}
+#timeline:after {
+    content: "";
+    clear: both;
+    display: table;
+    width: 100%}
+#timeline .timeline-item {
+    margin-bottom: 50px;
+    position: relative;
+}
+#timeline .timeline-item .timeline-icon {
+    background: #ee4d4d;
+    width: 50px;
+    height: 50px;
+    line-height:50px;
+    position: absolute;
+    text-align:center;
+    color:white;
+    font-weight:bold;
+    top: 0;
+    left: 50%;
+    overflow: hidden;
+    margin-left: -23px;
+    -webkit-border-radius: 50%;
+    -moz-border-radius: 50%;
+    -ms-border-radius: 50%;
+    border-radius: 50%}
+#timeline .timeline-item .timeline-icon img {
+    position: relative;
+    top: 14px;
+    left: 14px;
+}
+#timeline .timeline-item .timeline-content {
+    width: 45%;
+    background: #fafafa;
+    padding: 20px;
+    -webkit-box-shadow: 0 3px 0 rgba(0, 0, 0, 0.1);
+    -moz-box-shadow: 0 3px 0 rgba(0, 0, 0, 0.1);
+    -ms-box-shadow: 0 3px 0 rgba(0, 0, 0, 0.1);
+    box-shadow: 0 3px 0 rgba(0, 0, 0, 0.1);
+    -webkit-border-radius: 5px;
+    -moz-border-radius: 5px;
+    -ms-border-radius: 5px;
+    border-radius: 5px;
+    -webkit-transition: all 0.3s ease;
+    -moz-transition: all 0.3s ease;
+    -ms-transition: all 0.3s ease;
+    transition: all 0.3s ease;
+}
+#timeline .timeline-item .timeline-content h2 {
+    padding: 15px;
+    background: #ee4d4d;
+    color: #fff;
+    margin: -20px -20px 0 -20px;
+    font-weight: 500;
+    -webkit-border-radius: 3px 3px 0 0;
+    -moz-border-radius: 3px 3px 0 0;
+    -ms-border-radius: 3px 3px 0 0;
+    border-radius: 3px 3px 0 0;
+}
+#timeline .timeline-item .timeline-content:before {
+    content: '';
+    position: absolute;
+    left: 45%;
+    top: 20px;
+    width: 0;
+    height: 0;
+    border-top: 7px solid transparent;
+    border-bottom: 7px solid transparent;
+    border-left: 7px solid #ee4d4d;
+}
+#timeline .timeline-item .timeline-content.right {
+    float: right;
+}
+#timeline .timeline-item .timeline-content.right:before {
+    content: '';
+    right: 45%;
+    left: inherit;
+    border-left: 0;
+    border-right: 7px solid #ee4d4d;
+}
+
+@media screen and (max-width: 768px) {
+    #timeline {
+    margin: 30px;
+    padding: 0;
+}
+#timeline:before {
+    left: 0;
+}
+#timeline .timeline-item .timeline-content {
+    width: 90%;
+    float: right;
+}
+#timeline .timeline-item .timeline-content:before, #timeline .timeline-item .timeline-content.right:before {
+    left: 10%;
+    margin-left: -6px;
+    border-left: 0;
+    border-right: 7px solid #ee4d4d;
+}
+#timeline .timeline-item .timeline-icon {
+    left: 0;
+}
+}
+/* 时间轴结束↑↑↑↑↑↑↑ */
